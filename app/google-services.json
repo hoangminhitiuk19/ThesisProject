@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "764134313486",
+    "project_id": "face-recognition-cc124",
+    "storage_bucket": "face-recognition-cc124.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764134313486:android:3bc627435e9afe08dab65f",
+        "android_client_info": {
+          "package_name": "com.example.attendance_checking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzj2KNDNn3LNkmGk8ml8bKG2-dSaTcV-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764134313486:android:094c80502b7a37a0dab65f",
+        "android_client_info": {
+          "package_name": "com.example.face_and_voice_recognition"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzj2KNDNn3LNkmGk8ml8bKG2-dSaTcV-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764134313486:android:4f125214c279df64dab65f",
+        "android_client_info": {
+          "package_name": "com.example.thesis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzj2KNDNn3LNkmGk8ml8bKG2-dSaTcV-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
