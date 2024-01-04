@@ -1,6 +1,7 @@
 package com.example.thesis.Student;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,9 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,9 +40,13 @@ import com.example.thesis.FaceRecognition.FaceClassifier;
 import com.example.thesis.FaceRecognition.TFLiteFaceRecognition;
 import com.example.thesis.LiveFeed.CameraConnectionFragment;
 import com.example.thesis.LiveFeed.ImageUtils;
+import com.example.thesis.LoginActivity;
 import com.example.thesis.R;
+import com.example.thesis.Teacher.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceDetection;
@@ -48,6 +56,8 @@ import com.google.mlkit.vision.face.FaceDetectorOptions;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -68,6 +78,10 @@ public class FaceRecognitionActivity extends AppCompatActivity implements ImageR
     private static final int CROP_SIZE = 1000;
     private static final int TF_OD_API_INPUT_SIZE2 = 112;
 
+    //TODO declare firebase database
+
+    DatabaseReference reference;
+
 
     //TODO declare face detector
     FaceDetector detector;
@@ -82,6 +96,9 @@ public class FaceRecognitionActivity extends AppCompatActivity implements ImageR
         setContentView(R.layout.activity_face_recognition);
 
         handler = new Handler();
+
+        //TODO initialize firebase database
+        reference = FirebaseDatabase.getInstance().getReference();
 
         //TODO handling permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -392,6 +409,18 @@ public class FaceRecognitionActivity extends AppCompatActivity implements ImageR
                 if (result.getDistance() < 0.75f) {
                     confidence = result.getDistance();
                     title = result.getTitle();
+                    Date currentTime = Calendar.getInstance().getTime();
+                    //TODO Create a Student
+                    Student student = new Student(title, StudentMenuActivity.userID, "1", currentTime.toString());
+                    /*
+                    //TODO add student's attendance to Firebase Database
+                    reference.child("student").child(StudentMenuActivity.userID).child("Name").setValue(title);
+                    reference.child("student").child(StudentMenuActivity.userID).child("Attendence").setValue("1");
+                    reference.child("student").child(StudentMenuActivity.userID).child("Time").setValue(currentTime.toString());*/
+                    reference.child("student").child(StudentMenuActivity.userID).setValue(student);
+                    //TODO back to StudentMenuActivity
+                    startActivity(new Intent(getApplicationContext(), StudentMenuActivity.class));
+                    finish();
                 }
 
         }
@@ -441,4 +470,5 @@ public class FaceRecognitionActivity extends AppCompatActivity implements ImageR
         startActivity(intent);
         overridePendingTransition(0, 0);
     }
+
 }

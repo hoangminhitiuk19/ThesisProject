@@ -18,8 +18,8 @@ public class TeacherMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_menu);
 
-        Button logoutBtn = findViewById(R.id.logoutBtn);
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
@@ -27,5 +27,25 @@ public class TeacherMenuActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button showAttendanceListButton = findViewById(R.id.showAttendanceListButton);
+        showAttendanceListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AttendaceList.class));
+            }
+        });
+
+        Button requestCheckingAttendanceButton = findViewById(R.id.requestCheckingAttendanceButton);
+requestCheckingAttendanceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestCheckingAttendance();
+            }
+        });
+
+    }
+
+    void requestCheckingAttendance() {
     }
 }

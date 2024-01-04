@@ -84,12 +84,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Log.d("TAG", "onSuccess" + documentSnapshot.getData());
                 // identify user access level
-                if(documentSnapshot.getString("isStudent") != null){
+                if(documentSnapshot.getString("isStudent") != null || documentSnapshot.getString("isStudent").equals("1")){
                     // user is student
                     startActivity(new Intent(getApplicationContext(), StudentMenuActivity.class));
                     finish();
-                }
-                if(documentSnapshot.getString("isTeacher") != null){
+                }else if(documentSnapshot.getString("isTeacher") != null || documentSnapshot.getString("isTeacher").equals("1")){
                     // user is teacher
                     startActivity(new Intent(getApplicationContext(), TeacherMenuActivity.class));
                     finish();

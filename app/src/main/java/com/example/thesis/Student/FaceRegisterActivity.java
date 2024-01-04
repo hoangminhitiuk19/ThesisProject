@@ -116,6 +116,7 @@ public class FaceRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_register);
 
+
         //TODO handling permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -270,6 +271,7 @@ public class FaceRegisterActivity extends AppCompatActivity {
         //imageView.setImageBitmap(croppedFace);
         croppedFace = Bitmap.createScaledBitmap(croppedFace, 112, 112, false);
         FaceClassifier.Recognition recognition = faceClassifier.recognizeImage(croppedFace, true);
+
         showFaceRegisterDialogue(croppedFace, recognition);
 
     }
@@ -287,10 +289,11 @@ public class FaceRegisterActivity extends AppCompatActivity {
                 if(editText.getText().toString().equals("")) {
                     editText.setError("Enter Your Name");
                 } else {
+                    // TODO save the face embedding and name to the Firebase database
                     faceClassifier.register(editText.getText().toString(), recognition);
                     Toast.makeText(FaceRegisterActivity.this, "YOUR FACE IS SUCCESSFULLY REGISTERED", Toast.LENGTH_SHORT).show();
                     try{
-                        File file = new File(getExternalFilesDir(null), "RegisteredFaces.ser");
+                        File file = new File(getExternalFilesDir(null), "RegisteredFacesData.ser");
                         FileOutputStream fos = new FileOutputStream(file.getAbsolutePath());
                         ObjectOutputStream oos = new ObjectOutputStream(fos);
                         oos.writeObject(StudentMenuActivity.registered);
