@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Student.VoiceRecognitionActivity">
+
+    <TextView
+        android:id="@+id/voice_recognition_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="75dp"
+        android:text="Voice Recognition"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
+        android:layout_marginTop="125sp"
+        android:id="@+id/questionInputLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        android:hint="Select a question"
+        app:boxCornerRadiusBottomEnd="10sp"
+        app:boxCornerRadiusBottomStart="10sp"
+        app:boxCornerRadiusTopEnd="10sp"
+        app:boxCornerRadiusTopStart="10sp"
+        app:boxStrokeWidth="0sp"
+        app:boxStrokeWidthFocused="0sp"
+        >
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/questionAutoCompleteTextView"
+            android:inputType="none"
+            app:simpleItems="@array/questions_list"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answerEditText"
+        android:hint="Your Answer"
+        android:layout_marginTop="240sp"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
+        android:clickable="false"
+        android:longClickable="false"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/voiceInputButton"
+        android:text="Start Recording"
+        android:layout_marginTop="350sp"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
+        android:background="@color/purple_700"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/voiceRegisterButton"
+        android:text="Recognize"
+        android:layout_marginTop="450sp"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
+        android:background="@color/purple_700"
+        android:textColor="@color/white"/>
+</RelativeLayout>

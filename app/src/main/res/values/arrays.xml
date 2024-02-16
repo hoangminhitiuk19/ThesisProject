@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions_list" >
+        <item>What is your favorite color?</item>
+        <item>What is your favorite sport?</item>
+        <item>What is your favorite game?</item>
+        <item>What is your favorite animal?</item>
+        <item>What is your favorite book?</item>
+        <item>What is your favorite hobby?</item>
+        <item>What is your favorite subject?</item>
+        <item>What is your favorite country?</item>
+        <item>What is your favorite city?</item>
+        <item>What is your favorite food?</item>
+    </string-array>
+</resources>

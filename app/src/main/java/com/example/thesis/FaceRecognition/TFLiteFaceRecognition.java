@@ -52,7 +52,7 @@ public class TFLiteFaceRecognition
 
 
     public void register(String name, Recognition rec) {
-        StudentMenuActivity.registered.put(name, rec);
+        StudentMenuActivity.faceRegistered.put(name, rec);
     }
 
     private TFLiteFaceRecognition() {}
@@ -104,7 +104,7 @@ public class TFLiteFaceRecognition
     // and retrurns the pair <id, distance>
     private Pair<String, Float> findNearest(float[] emb) {
         Pair<String, Float> ret = null;
-        for (Map.Entry<String, Recognition> entry : StudentMenuActivity.registered.entrySet()) {
+        for (Map.Entry<String, Recognition> entry : StudentMenuActivity.faceRegistered.entrySet()) {
             final String name = entry.getKey();
             final float[] knownEmb = ((float[][]) entry.getValue().getEmbeeding())[0];
 
@@ -157,7 +157,7 @@ public class TFLiteFaceRecognition
         String id = "0";
         String label = "?";
 
-        if (StudentMenuActivity.registered.size() > 0) {
+        if (StudentMenuActivity.faceRegistered.size() > 0) {
             final Pair<String, Float> nearest = findNearest(embeedings[0]);
             if (nearest != null) {
                 final String name = nearest.first;

@@ -296,7 +296,7 @@ public class FaceRegisterActivity extends AppCompatActivity {
                         File file = new File(getExternalFilesDir(null), "RegisteredFacesData.ser");
                         FileOutputStream fos = new FileOutputStream(file.getAbsolutePath());
                         ObjectOutputStream oos = new ObjectOutputStream(fos);
-                        oos.writeObject(StudentMenuActivity.registered);
+                        oos.writeObject(StudentMenuActivity.faceRegistered);
                         Log.d("tryWrite", "Written Successfully");
                         oos.close();
                         fos.close();

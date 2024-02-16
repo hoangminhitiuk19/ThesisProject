@@ -1,7 +1,6 @@
 package com.example.thesis.Student;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -25,9 +24,6 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,9 +36,7 @@ import com.example.thesis.FaceRecognition.FaceClassifier;
 import com.example.thesis.FaceRecognition.TFLiteFaceRecognition;
 import com.example.thesis.LiveFeed.CameraConnectionFragment;
 import com.example.thesis.LiveFeed.ImageUtils;
-import com.example.thesis.LoginActivity;
 import com.example.thesis.R;
-import com.example.thesis.Teacher.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -411,15 +405,12 @@ public class FaceRecognitionActivity extends AppCompatActivity implements ImageR
                     title = result.getTitle();
                     Date currentTime = Calendar.getInstance().getTime();
                     //TODO Create a Student
-                    Student student = new Student(title, StudentMenuActivity.userID, "1", currentTime.toString());
-                    /*
+                    Student studentInformation = new Student(title, StudentMenuActivity.studentID, currentTime.toString());
                     //TODO add student's attendance to Firebase Database
-                    reference.child("student").child(StudentMenuActivity.userID).child("Name").setValue(title);
-                    reference.child("student").child(StudentMenuActivity.userID).child("Attendence").setValue("1");
-                    reference.child("student").child(StudentMenuActivity.userID).child("Time").setValue(currentTime.toString());*/
-                    reference.child("student").child(StudentMenuActivity.userID).setValue(student);
+                    reference.child("student").setValue(studentInformation);
                     //TODO back to StudentMenuActivity
-                    startActivity(new Intent(getApplicationContext(), StudentMenuActivity.class));
+                    Toast.makeText(FaceRecognitionActivity.this, "YOU HAVE CHECKED ATTENDANCE", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(getApplicationContext(), StudentMenuActivity.class));
                     finish();
                 }
 

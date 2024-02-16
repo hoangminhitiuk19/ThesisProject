@@ -1,4 +1,4 @@
-package com.example.thesis;
+package com.example.thesis.Authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.thesis.R;
 import com.example.thesis.Student.StudentMenuActivity;
 import com.example.thesis.Teacher.TeacherMenuActivity;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -55,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
                             checkUserAccessLevel(authResult.getUser().getUid());
-                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
